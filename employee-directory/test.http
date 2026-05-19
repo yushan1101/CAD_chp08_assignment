@@ -1,0 +1,44 @@
+### Health check
+GET http://localhost:3001/
+
+### Get all employees
+GET http://localhost:3001/employees
+
+### Search
+GET http://localhost:3001/employees?q=ahmad
+
+### Sort by salary descending
+GET http://localhost:3001/employees?sortBy=salary&order=desc
+
+### Create new employee
+POST http://localhost:3001/employees
+Content-Type: application/json
+
+{
+  "empId": "EMP099",
+  "name": "Test Employee",
+  "email": "test.employee@company.com.my",
+  "department": "IT",
+  "position": "Intern",
+  "hireDate": "2024-01-01",
+  "salary": 1800,
+  "active": true
+}
+
+### Update (use the id returned from the POST above)
+PUT http://localhost:3001/employees/8
+Content-Type: application/json
+
+{
+  "empId": "EMP099",
+  "name": "Test Employee Updated",
+  "email": "test.employee@company.com.my",
+  "department": "HR",
+  "position": "Executive",
+  "hireDate": "2024-01-01",
+  "salary": 3500,
+  "active": true
+}
+
+### Delete
+DELETE http://localhost:3001/employees/8
