@@ -41,7 +41,7 @@ const formatDate = (date) =>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="emp in employees" :key="emp.id">
+        <tr v-for="emp in employees" :key="emp.id" >
 
           <td><code>{{ emp.empId }}</code></td>
 
@@ -61,9 +61,11 @@ const formatDate = (date) =>
             </span>
           </td>
 
-          <td class="action-btns">
-            <button @click="emit('edit', emp)">Edit</button>
-            <button class="danger" @click="emit('delete', emp.id)">Delete</button>
+          <td style="vertical-align: middle; white-space: nowrap; width: 1%;">
+            <div class="action-btns">
+              <button @click="emit('edit', emp)">Edit</button>
+              <button class="danger" @click="emit('delete', emp.id)">Delete</button>
+            </div>
           </td>
 
         </tr>
