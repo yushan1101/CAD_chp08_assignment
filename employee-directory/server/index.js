@@ -80,17 +80,21 @@ app.post('/employees', async (req, res) => {
 app.put('/employees/:id', async (req, res) => {
   try {
     const { empId, name, email, department, position, hireDate, salary, active } = req.body
+    console.log('active received:', active) // add this line here
     const [r] = await pool.query(
       `UPDATE employees SET
          empId=?, name=?, email=?, department=?,
          position=?, hireDate=?, salary=?, active=?
        WHERE id=?`,
       [empId, name, email, department, position, hireDate,
-       Number(salary), active ? 1 : 0, req.params.id]
+       Number(salary), active === true || active === 1 ? 1 : 0, req.params.id]
     )
     if (!r.affectedRows) return res.status(404).json({ error: 'Not found' })
     res.json({ id: Number(req.params.id), ...req.body })
   } catch (err) {
+    if (err.code === 'ER_DUP_ENTRY') {
+      return res.status(409).json({ error: 'Employee ID or email already exists' })
+    }
     console.error(err)
     res.status(500).json({ error: 'Database error' })
   }
