@@ -315,9 +315,15 @@ code {
 }
 
 /* ── Action buttons in table ── */
-.action-btns { display: flex; gap: 0.4rem; }
+.action-btns {
+  display        : flex;
+  flex-direction : column;
+  gap            : 0.4rem;
+  align-items    : flex-start;
+  width          : fit-content;
+}
 
-.action-btns button {
+/*.action-btns button {
   padding      : 0.32rem 0.8rem;
   border       : none;
   border-radius: 6px;
@@ -328,6 +334,20 @@ code {
   color        : var(--lav-dark);
   border       : 1px solid var(--lavender);
   transition   : background 0.15s, transform 0.1s;
+}*/
+
+.action-btns button {
+  width        : 100%;
+  padding      : 0.32rem 0.8rem;
+  border-radius: 6px;
+  cursor       : pointer;
+  font-size    : 0.8rem;
+  font-weight  : 600;
+  transition   : background 0.15s, transform 0.1s;
+  background   : var(--lav-light);
+  color        : var(--lav-dark);
+  border       : 1.5px solid var(--lavender);
+  white-space  : nowrap;
 }
 
 .action-btns button:hover {
@@ -339,13 +359,22 @@ code {
 .action-btns .danger {
   background: var(--pink-light);
   color     : var(--pink-dark);
-  border    : 1px solid var(--pink);
+  border    : 1.5px solid var(--pink);
 }
 
 .action-btns .danger:hover {
   background: var(--pink);
   color     : white;
 }
+
+td.action-btns {
+  vertical-align : middle;
+  white-space    : nowrap;
+  padding-top    : 0.65rem;
+  padding-bottom : 0.65rem;
+  height         : 100%;
+}
+
 
 /* ── States ── */
 .empty {
@@ -419,3 +448,4 @@ code {
   .employee-table th:nth-child(5),
   .employee-table td:nth-child(5) { display: none; }
 }
+
