@@ -375,13 +375,44 @@ code {
 }
 
 /* ── Responsive ── */
-@media (max-width: 768px) {
-  header { padding: 1rem 1.2rem; }
 
+/* Tablet (768px and above) */
+@media (min-width: 768px) {
+  .employee-form {
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    gap                  : 0 1.5rem;
+  }
+
+  .employee-form h3,
+  .employee-form .check,
+  .employee-form .actions {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Laptop (1024px and above) */
+@media (min-width: 1024px) {
+  .employee-form {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .search-sort {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Mobile (below 768px) */
+@media (max-width: 767px) {
+  header { padding: 1rem 1.2rem; }
+  header h1 { font-size: 1.3rem; }
+
+  main { padding: 0 0.8rem; gap: 1rem; }
+
+  .summary-bar  { flex-wrap: wrap; gap: 0.8rem; font-size: 0.85rem; }
   .search-sort  { flex-direction: column; align-items: stretch; }
   .sort-box     { flex-direction: column; }
   .action-btns  { flex-direction: column; }
-  .summary-bar  { gap: 1rem; }
 
   .employee-table th:nth-child(4),
   .employee-table td:nth-child(4),
