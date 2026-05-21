@@ -59,4 +59,5 @@ and it shows: API running at http://localhost:3001
 
 
 ## Notes on decisions
-
+1. Every SQL query uses ? placeholder prepared statements instead of string concatenation.
+2. MySQL stores active as (1 or 0) but Vue checkbox v-model works with true or false. The conversion is handled explicitly in EmployeeForm.vue using Number(val.active) === 1 when loading and form.value.active ? 1 : 0 when saving.
